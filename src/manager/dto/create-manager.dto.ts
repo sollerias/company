@@ -1,6 +1,6 @@
-import { IsEmail, IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { IsEmail, IsNotEmpty, IsString } from "class-validator";
 
-export class CreateUserDto {
+export class CreateManagerDto {
   @IsNotEmpty()
   @IsEmail()
   readonly email: string;
@@ -16,7 +16,4 @@ export class CreateUserDto {
   @IsNotEmpty()
   @IsString()
   readonly last_name: string;
-
-  @IsNumber()
-  readonly manager_id: number;
 }

@@ -17,7 +17,7 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
       username: process.env.DB_USER,
       schema: process.env.DB_SCHEMA,
       migrations: ['dist/migrations/**/*.js'],
-      entities: ["dist/**/*.entity{.ts,.js}"],
+      entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
       logging: true,
     };

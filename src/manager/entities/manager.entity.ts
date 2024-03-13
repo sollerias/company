@@ -1,14 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { IsEmail, IsString, MaxLength, MinLength } from "class-validator";
-import { Manager } from "src/manager/entities/manager.entity";
+import { User } from "src/user/entities/user.entity";
 
 @Entity()
-export class User {
+export class Manager {
   @PrimaryGeneratedColumn()
-  user_id: number;
-  
-  @ManyToOne(() => Manager, (manager) => manager.users)
-  manager: Manager;
+  manager_id: number;
+
+  @OneToMany(() => User, (user) => User.user, { cascade: true, onDelete: 'SET NULL' })
+  users: User[];
 
   @Column('timestamp', { default: () => 'CURRENT_TIMESTAMP' })
   dttm_cr: Date;
@@ -40,5 +40,4 @@ export class User {
   @MinLength(3)
   @MaxLength(100)
   last_name: string;
-  static user: string | ((object: User) => any);
 }

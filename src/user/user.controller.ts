@@ -12,7 +12,7 @@ export class UserController {
     return this.userService.ping();
   }
 
-  @Post()
+  @Post('create')
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
   }
